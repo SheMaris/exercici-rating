@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="stargroup">
+    <input type="radio" id="star5" name="stargroup" value="5" /><label for="star5"></label>
+    <input type="radio" id="star4" name="stargroup" value="4" /><label for="star4"></label>
+    <input type="radio" id="star3" name="stargroup" value="3" /><label for="star3"></label>
+    <input type="radio" id="star2" name="stargroup" value="2" /><label for="star2"></label>
+    <input type="radio" id="star1" name="stargroup" value="1" /><label for="star1"></label>
+</div>
+</body>
+</html>
+
+<style type="text/css">
+body {
+	text-align: center;
+}
+.stargroup {
+	display: inline-block;
+}
+.stargroup > input { display: none; } 
+.stargroup > label:before {
+  font-size: 1.5em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.stargroup > label { 
+  color: grey; 
+  float: right; /* to make it from left to right */
+}
+
+.stargroup > input:checked ~ label, /* show gold star when clicked */
+.stargroup:not(:checked) > label:hover /* hover current star */
+ { color: #FFD700;  } 
+
+.stargroup > input:checked + label:hover, /* hover current star when changing rating */
+.stargroup > input:checked ~ label:hover,
+.stargroup > label:hover ~ input:checked ~ label, /* lighten current selection */
+.stargroup > input ~ label:hover ~ label /* hover previous stars in list */
+{ color: #FFED85;  } 
+
+</style>
+
+<script type="text/javascript">
+$('html').click(function (e) {
+  console.log(e.target.id);
+    if (!e.target.id.startsWith("star")) {
+        $('input[id^="star"]').each(function () {
+        	console.log(this);
+		    this.checked = false;
+		});
+      
+	    //document.getElementById("star1").checked = false;
+	    //document.getElementById("star2").checked = false;
+	    //document.getElementById("star3").checked = false;
+	    //document.getElementById("star4").checked = false;
+	    //document.getElementById("star5").checked = false;
+    }
+});
+</script>
